@@ -25,7 +25,7 @@ To run the application in Docker containers, run the following command:
 docker-compose up
 ```
 
-Note that currently application will not properly wait for the database to be ready before starting.  As a result,
+Note that currently the application will not properly wait for the database to be ready before starting.  As a result,
 the first time you run "docker-compose up", the service will fail and exit.  Simply run the command again and it will work.
 This will be addressed in a future update.
 

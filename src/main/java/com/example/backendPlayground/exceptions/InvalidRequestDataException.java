@@ -1,4 +1,4 @@
-package com.example.accessingDataApp.exceptions;
+package com.example.backendPlayground.exceptions;
 
 public class InvalidRequestDataException extends RuntimeException {
 	public InvalidRequestDataException(String message) {

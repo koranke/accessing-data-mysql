@@ -1,4 +1,4 @@
-package com.example.accessingDataApp.exceptions;
+package com.example.backendPlayground.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

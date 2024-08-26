@@ -1,6 +1,6 @@
-package com.example.accessingDataApp.enums;
+package com.example.backendPlayground.enums;
 
-import com.example.accessingDataApp.exceptions.InvalidEnumValueException;
+import com.example.backendPlayground.exceptions.InvalidEnumValueException;
 
 public enum PostVisibility {
 	PUBLIC("public"),

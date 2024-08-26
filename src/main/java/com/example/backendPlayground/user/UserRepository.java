@@ -1,4 +1,4 @@
-package com.example.accessingDataApp.user;
+package com.example.backendPlayground.user;
 
 import org.springframework.data.repository.CrudRepository;
 

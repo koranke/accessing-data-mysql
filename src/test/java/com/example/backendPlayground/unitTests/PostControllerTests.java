@@ -1,11 +1,11 @@
-package com.example.accessingDataApp.unitTests;
+package com.example.backendPlayground.unitTests;
 
-import com.example.accessingDataApp.enums.PostVisibility;
-import com.example.accessingDataApp.post.Post;
-import com.example.accessingDataApp.post.PostController;
-import com.example.accessingDataApp.post.PostRepository;
-import com.example.accessingDataApp.user.User;
-import com.example.accessingDataApp.user.UserRepository;
+import com.example.backendPlayground.enums.PostVisibility;
+import com.example.backendPlayground.post.Post;
+import com.example.backendPlayground.post.PostController;
+import com.example.backendPlayground.post.PostRepository;
+import com.example.backendPlayground.user.User;
+import com.example.backendPlayground.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

@@ -1,4 +1,4 @@
-package com.example.accessingDataApp.exceptions;
+package com.example.backendPlayground.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
 	public ResourceNotFoundException(String message) {

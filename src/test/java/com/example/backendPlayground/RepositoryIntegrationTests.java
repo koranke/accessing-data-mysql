@@ -1,9 +1,9 @@
-package com.example.accessingDataApp;
+package com.example.backendPlayground;
 
-import com.example.accessingDataApp.post.Post;
-import com.example.accessingDataApp.post.PostRepository;
-import com.example.accessingDataApp.user.User;
-import com.example.accessingDataApp.user.UserRepository;
+import com.example.backendPlayground.post.Post;
+import com.example.backendPlayground.post.PostRepository;
+import com.example.backendPlayground.user.User;
+import com.example.backendPlayground.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,8 +1,8 @@
-package com.example.accessingDataApp.unitTests;
+package com.example.backendPlayground.unitTests;
 
-import com.example.accessingDataApp.user.User;
-import com.example.accessingDataApp.user.UserController;
-import com.example.accessingDataApp.user.UserRepository;
+import com.example.backendPlayground.user.User;
+import com.example.backendPlayground.user.UserController;
+import com.example.backendPlayground.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;

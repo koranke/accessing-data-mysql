@@ -1,7 +1,7 @@
-package com.example.accessingDataApp.post;
+package com.example.backendPlayground.post;
 
-import com.example.accessingDataApp.enums.PostVisibility;
-import com.example.accessingDataApp.user.User;
+import com.example.backendPlayground.enums.PostVisibility;
+import com.example.backendPlayground.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;

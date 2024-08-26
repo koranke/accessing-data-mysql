@@ -1,6 +1,6 @@
-package com.example.accessingDataApp.user;
+package com.example.backendPlayground.user;
 
-import com.example.accessingDataApp.exceptions.InvalidRequestDataException;
+import com.example.backendPlayground.exceptions.InvalidRequestDataException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
