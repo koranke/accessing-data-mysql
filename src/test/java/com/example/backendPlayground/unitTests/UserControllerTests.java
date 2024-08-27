@@ -9,6 +9,10 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -41,12 +45,28 @@ public class UserControllerTests {
 
 	@Test
 	public void testGetAllUsers() throws Exception {
-		Mockito.when(userRepository.findAll()).thenReturn(Collections.singletonList(user));
+		Pageable pageable = PageRequest.of(0, 10);
+		Page<User> pagedResponse = new PageImpl<>(Collections.singletonList(user), pageable, 1);
+
+		Mockito.when(userRepository.findAll(Mockito.any(Pageable.class))).thenReturn(pagedResponse);
 
 		mockMvc.perform(get("/api/users")
+						.param("page", "0")
+						.param("size", "10")
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
-				.andExpect(content().json("[{\"id\":1,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"john.doe@example.com\"}]"));
+				.andExpect(content().json("{\"totalItems\":1,\"totalPages\":1,\"currentPage\":0,\"users\":[{\"id\":1,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"john.doe@example.com\",\"phone\":null,\"dateOfBirth\":null}],\"numberOfItems\":1,\"size\":10}"))
+		;
+	}
+
+	@Test
+	public void testGetUserById() throws Exception {
+		Mockito.when(userRepository.findById(1L)).thenReturn(java.util.Optional.of(user));
+
+		mockMvc.perform(get("/api/users/1")
+						.contentType(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk())
+				.andExpect(content().json("{\"id\":1,\"firstName\":\"John\",\"lastName\":\"Doe\",\"email\":\"john.doe@example.com\"}"));
 	}
 
 	@Test

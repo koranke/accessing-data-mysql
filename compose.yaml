@@ -1,7 +1,6 @@
 services:
     app:
-#        container_name: 'guide-app'
-        image: 'spring-mysql-api-demo'
+        image: 'backend-playground'
         build:
           context: .
           dockerfile: Dockerfile
@@ -9,6 +8,8 @@ services:
         - '8081:8081'
         depends_on:
         - mysql-db
+        profiles:
+          - full
         environment:
         - 'SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/storytack'
         - 'SPRING_DATASOURCE_USERNAME=appuser'
@@ -16,7 +17,6 @@ services:
         - 'SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver'
         - 'SPRING_JPA_HIBERNATE_DDL_AUTO=update'
     mysql-db:
-#      container_name: 'guide-mysql'
       image: 'mysql:latest'
       environment:
         - 'MYSQL_DATABASE=storytack'
