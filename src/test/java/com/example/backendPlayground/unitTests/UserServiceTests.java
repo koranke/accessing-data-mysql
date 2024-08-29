@@ -84,8 +84,8 @@ public class UserServiceTests {
 	public void testAddNewUserInvalidData() {
 		User newUser = new User();
 		newUser.setFirstName("");
-		newUser.setLastName("");
-		newUser.setEmail("");
+		newUser.setLastName("Lastname");
+		newUser.setEmail("email@j.com");
 
 		assertThrows(InvalidRequestDataException.class, () -> {
 			userService.addNewUser(newUser);
