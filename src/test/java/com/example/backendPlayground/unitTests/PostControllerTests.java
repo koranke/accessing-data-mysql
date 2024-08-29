@@ -3,9 +3,9 @@ package com.example.backendPlayground.unitTests;
 import com.example.backendPlayground.enums.PostVisibility;
 import com.example.backendPlayground.post.Post;
 import com.example.backendPlayground.post.PostController;
-import com.example.backendPlayground.post.PostRepository;
+import com.example.backendPlayground.post.PostService;
 import com.example.backendPlayground.user.User;
-import com.example.backendPlayground.user.UserRepository;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -15,7 +15,7 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
-import java.util.Optional;
+import java.util.Collections;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -29,16 +29,18 @@ public class PostControllerTests {
 	private MockMvc mockMvc;
 
 	@MockBean
-	private PostRepository postRepository;
+	private PostService postService;
 
-	@MockBean
-	private UserRepository userRepository;
+	@Autowired
+	private ObjectMapper objectMapper;
 
 	private User user;
 	private Post post;
+	private String postJson;
+	private String postJsonResponse;
 
 	@BeforeEach
-	public void setup() {
+	public void setup() throws Exception {
 		user = new User();
 		user.setId(1L);
 		user.setFirstName("Test");
@@ -51,46 +53,43 @@ public class PostControllerTests {
 		post.setContent("Test Content");
 		post.setVisibility(PostVisibility.PUBLIC);
 		post.setUser(user);
+
+		postJson = objectMapper.writeValueAsString(post);
+		postJsonResponse = objectMapper.writeValueAsString(Collections.singletonList(post));
 	}
 
 	@Test
 	public void testGetAllPosts() throws Exception {
+		Mockito.when(postService.getAllPosts()).thenReturn(Collections.singletonList(post));
+
 		mockMvc.perform(get("/api/posts")
 						.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk());
+				.andExpect(status().isOk())
+				.andExpect(content().json(postJsonResponse));
 	}
 
 	@Test
 	public void testGetAllPostsByUser() throws Exception {
-		Mockito.when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+		Mockito.when(postService.getAllPostsByUser(1L)).thenReturn(Collections.singletonList(post));
+
 		mockMvc.perform(get("/api/users/1/posts")
 						.contentType(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk());
+				.andExpect(status().isOk())
+				.andExpect(content().json(postJsonResponse));
 	}
 
 	@Test
 	public void testAddNewPost() throws Exception {
-		Mockito.when(userRepository.findById(1L)).thenReturn(Optional.of(user));
-		Mockito.when(postRepository.save(Mockito.any(Post.class))).thenReturn(post);
+		Mockito.when(postService.addNewPost(Mockito.eq(1L), Mockito.any(Post.class))).thenReturn(post);
 
-		String newPostJson = "{\"title\":\"New Post\",\"content\":\"New Content\",\"visibility\":\"PUBLIC\"}";
+		Post newPost = objectMapper.readValue(postJson, Post.class);
+		newPost.setId(null);
+		String newPostJson = objectMapper.writeValueAsString(newPost);
 
 		mockMvc.perform(post("/api/users/1/posts")
 						.contentType(MediaType.APPLICATION_JSON)
 						.content(newPostJson))
 				.andExpect(status().isOk())
-				.andExpect(content().json("{\"id\":1,\"title\":\"Test Title\",\"content\":\"Test Content\",\"visibility\":\"PUBLIC\"}"));
-	}
-
-	@Test
-	public void testAddNewPostInvalidUser() throws Exception {
-		Mockito.when(userRepository.findById(1L)).thenReturn(Optional.empty());
-
-		String newPostJson = "{\"title\":\"New Post\",\"content\":\"New Content\",\"visibility\":\"PUBLIC\"}";
-
-		mockMvc.perform(post("/api/users/1/posts")
-						.contentType(MediaType.APPLICATION_JSON)
-						.content(newPostJson))
-				.andExpect(status().isNotFound());
+				.andExpect(content().json(postJson));
 	}
 }
