@@ -1,9 +1,5 @@
 package com.example.backendPlayground.post;
 
-import com.example.backendPlayground.exceptions.InvalidRequestDataException;
-import com.example.backendPlayground.exceptions.ResourceNotFoundException;
-import com.example.backendPlayground.user.User;
-import com.example.backendPlayground.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

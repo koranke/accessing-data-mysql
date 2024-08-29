@@ -36,7 +36,6 @@ public class PostControllerTests {
 
 	private User user;
 	private Post post;
-	private String userJson;
 	private String postJson;
 	private String postJsonResponse;
 

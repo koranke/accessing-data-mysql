@@ -87,17 +87,13 @@ public class UserServiceTests {
 		newUser.setLastName("Lastname");
 		newUser.setEmail("email@j.com");
 
-		assertThrows(InvalidRequestDataException.class, () -> {
-			userService.addNewUser(newUser);
-		});
+		assertThrows(InvalidRequestDataException.class, () -> userService.addNewUser(newUser));
 	}
 
 	@Test
 	public void testGetUserByIdNotFound() {
 		when(userRepository.findById(1L)).thenReturn(Optional.empty());
 
-		assertThrows(ResourceNotFoundException.class, () -> {
-			userService.getUserById(1L);
-		});
+		assertThrows(ResourceNotFoundException.class, () -> userService.getUserById(1L));
 	}
 }

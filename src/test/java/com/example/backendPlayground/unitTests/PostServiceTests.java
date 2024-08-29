@@ -84,7 +84,5 @@ public class PostServiceTests {
 		newPost.setTitle("New Post");
 		newPost.setContent("New Content");
 
-		assertThrows(ResourceNotFoundException.class, () -> {
-			postService.addNewPost(1L, newPost);
-		});
+		assertThrows(ResourceNotFoundException.class, () -> postService.addNewPost(1L, newPost));
 	}}
