@@ -1,5 +1,7 @@
 # Demo Spring Project
 
+[![CI](https://github.com/koranke/backend-playground/actions/workflows/test.yml/badge.svg)](https://github.com/koranke/backend-playground/actions/workflows/test.yml)
+
 This project was derived from the Spring Guides project for accessing MySQL data with Spring Boot. The original project 
 can be found [here](https://spring.io/guides/gs/accessing-data-mysql/).
 It's been updated to include some additional features and to be used as a playground for testing exercises.  For example,
