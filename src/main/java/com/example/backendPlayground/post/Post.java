@@ -3,15 +3,19 @@ package com.example.backendPlayground.post;
 import com.example.backendPlayground.enums.PostVisibility;
 import com.example.backendPlayground.user.User;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.Data;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 @Entity
+@Data
 public class Post {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -21,64 +25,9 @@ public class Post {
 	private User user;
 	private String title;
 	private String content;
+	@Enumerated(EnumType.STRING)
 	private PostVisibility visibility;
-	private Date dateCreated;
-	private Date dateUpdated;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public String getTitle() {
-		return title;
-	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
-	public String getContent() {
-		return content;
-	}
-
-	public void setContent(String content) {
-		this.content = content;
-	}
-
-	public Date getDateCreated() {
-		return dateCreated;
-	}
-
-	public void setDateCreated(Date dateCreated) {
-		this.dateCreated = dateCreated;
-	}
-
-	public Date getDateUpdated() {
-		return dateUpdated;
-	}
-
-	public void setDateUpdated(Date dateUpdated) {
-		this.dateUpdated = dateUpdated;
-	}
-
-	public PostVisibility getVisibility() {
-		return visibility;
-	}
-
-	public void setVisibility(PostVisibility visibility) {
-		this.visibility = visibility;
-	}
+	private Timestamp dateCreated;
+	private Timestamp dateUpdated;
 }
 

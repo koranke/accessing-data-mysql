@@ -3,6 +3,7 @@ package com.example.backendPlayground.unitTests;
 import com.example.backendPlayground.enums.PostVisibility;
 import com.example.backendPlayground.post.Post;
 import com.example.backendPlayground.post.PostController;
+import com.example.backendPlayground.post.PostDTO;
 import com.example.backendPlayground.post.PostService;
 import com.example.backendPlayground.user.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -35,7 +36,7 @@ public class PostControllerTests {
 	private ObjectMapper objectMapper;
 
 	private User user;
-	private Post post;
+	private PostDTO post;
 	private String postJson;
 	private String postJsonResponse;
 
@@ -47,12 +48,12 @@ public class PostControllerTests {
 		user.setLastName("User");
 		user.setEmail("tuser@outlook.com");
 
-		post = new Post();
+		post = new PostDTO();
 		post.setId(1L);
 		post.setTitle("Test Title");
 		post.setContent("Test Content");
 		post.setVisibility(PostVisibility.PUBLIC);
-		post.setUser(user);
+		post.setUserId(1L);
 
 		postJson = objectMapper.writeValueAsString(post);
 		postJsonResponse = objectMapper.writeValueAsString(Collections.singletonList(post));
