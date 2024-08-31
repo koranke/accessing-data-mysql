@@ -3,6 +3,7 @@ package com.example.backendPlayground.unitTests;
 import com.example.backendPlayground.exceptions.InvalidRequestDataException;
 import com.example.backendPlayground.user.User;
 import com.example.backendPlayground.user.UserController;
+import com.example.backendPlayground.user.UserDTO;
 import com.example.backendPlayground.user.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,12 +32,12 @@ public class UserControllerTests {
 	@Autowired
 	private ObjectMapper objectMapper;
 
-	private User user;
+	private UserDTO user;
 	private String userJson;
 
 	@BeforeEach
 	public void setup() throws Exception {
-		user = new User();
+		user = new UserDTO();
 		user.setId(1L);
 		user.setFirstName("John");
 		user.setLastName("Doe");

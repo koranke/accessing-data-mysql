@@ -22,8 +22,9 @@ public class UserService {
 	public Map<String, Object> getAllUsers(int page, int size) {
 		Pageable pageable = PageRequest.of(page, size);
 		Page<User> allUsers = userRepository.findAll(pageable);
+		Page<UserDTO> allUsersDTO = allUsers.map(UserDTO::new);
 		return Map.of(
-				"users", allUsers.getContent(),
+				"users", allUsersDTO.getContent(),
 				"totalItems", allUsers.getTotalElements(),
 				"numberOfItems", allUsers.getNumberOfElements(),
 				"totalPages", allUsers.getTotalPages(),
@@ -32,12 +33,13 @@ public class UserService {
 		);
 	}
 
-	public User getUserById(Long userId) {
-		return userRepository.findById(userId)
+	public UserDTO getUserById(Long userId) {
+		User user = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User with id " + userId + " does not exist"));
+		return new UserDTO(user);
 	}
 
-	public User addNewUser(User user) {
+	public UserDTO addNewUser(User user) {
 		if (user.getId() != null) {
 			throw new InvalidRequestDataException("New user must not have an id");
 		}
@@ -54,10 +56,10 @@ public class UserService {
 			throw new InvalidRequestDataException("User with same first name, last name and email already exists");
 		}
 
-		return userRepository.save(user);
+		return new UserDTO(userRepository.save(user));
 	}
 
-	public User updateUser(Long userId, User user) {
+	public UserDTO updateUser(Long userId, User user) {
 		User existingUser = userRepository.findById(userId)
 				.orElseThrow(() -> new ResourceNotFoundException("User with id " + userId + " does not exist"));
 
@@ -81,7 +83,7 @@ public class UserService {
 			throw new InvalidRequestDataException("User with same first name, last name and email already exists");
 		}
 
-		return userRepository.save(existingUser);
+		return new UserDTO(userRepository.save(existingUser));
 	}
 
 	public void deleteUser(Long userId) {

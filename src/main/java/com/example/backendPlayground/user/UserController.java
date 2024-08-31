@@ -31,19 +31,19 @@ public class UserController {
 
 	@GetMapping(value="/users/{userId}", produces = "application/json")
 	public ResponseEntity<?> getUserById(@PathVariable Long userId) {
-		User user = userService.getUserById(userId);
+		UserDTO user = userService.getUserById(userId);
 		return ResponseEntity.ok().body(user);
 	}
 
 	@PostMapping("/users")
 	public ResponseEntity<?> addNewUser(@RequestBody User user) {
-		User savedUser = userService.addNewUser(user);
+		UserDTO savedUser = userService.addNewUser(user);
 		return ResponseEntity.ok().body(savedUser);
 	}
 
 	@PutMapping("/users/{userId}")
 	public ResponseEntity<?> updateUser(@PathVariable Long userId, @RequestBody User user) {
-		User updatedUser = userService.updateUser(userId, user);
+		UserDTO updatedUser = userService.updateUser(userId, user);
 		return ResponseEntity.ok().body(updatedUser);
 	}
 
