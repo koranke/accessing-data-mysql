@@ -14,6 +14,7 @@ added later.
 
 ## Running the Application
 Ensure you have Docker installed on your machine.  You can download Docker Desktop from [here](https://www.docker.com/products/docker-desktop).
+You will also need to set environment variables for your desired values for DB_USER, DB_ROOT_PASSWORD and DB_PASSWORD (for MySQL configuration).
 
 To package the application, run the following command:
 ```shell
