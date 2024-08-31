@@ -3,6 +3,7 @@ package com.example.backendPlayground.unitTests;
 import com.example.backendPlayground.exceptions.InvalidRequestDataException;
 import com.example.backendPlayground.exceptions.ResourceNotFoundException;
 import com.example.backendPlayground.user.User;
+import com.example.backendPlayground.user.UserDTO;
 import com.example.backendPlayground.user.UserRepository;
 import com.example.backendPlayground.user.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -33,11 +34,11 @@ public class UserServiceTests {
 	@Mock
 	private UserRepository userRepository;
 
-	private User user;
+	private UserDTO user;
 
 	@BeforeEach
 	public void setup() {
-		user = new User();
+		user = new UserDTO();
 		user.setId(1L);
 		user.setFirstName("Test");
 		user.setLastName("User");
@@ -62,14 +63,14 @@ public class UserServiceTests {
 
 	@Test
 	public void testGetUserById() {
-		given(userRepository.findById(1L)).willReturn(Optional.of(user));
-		User result = userService.getUserById(1L);
+		given(userRepository.findById(1L)).willReturn(Optional.of(user.toUserEntity()));
+		UserDTO result = userService.getUserById(1L);
 		assertEquals(user, result);
 	}
 
 	@Test
 	public void testAddNewUser() {
-		when(userRepository.save(any(User.class))).thenReturn(user);
+		when(userRepository.save(any(User.class))).thenReturn(user.toUserEntity());
 
 		User newUser = new User();
 		newUser.setFirstName("New");
