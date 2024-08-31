@@ -1,6 +1,7 @@
 package com.example.backendPlayground;
 
 import com.example.backendPlayground.post.Post;
+import com.example.backendPlayground.post.PostDTO;
 import com.example.backendPlayground.post.PostRepository;
 import com.example.backendPlayground.user.User;
 import com.example.backendPlayground.user.UserRepository;
@@ -50,19 +51,19 @@ public class RepositoryIntegrationTests {
 
 	@Test
 	void testFindAllUsers() {
-		List<User> users = (List<User>) userRepository.findAll();
+		List<User> users = userRepository.findAll();
 		assertThat(users).isNotEmpty();
 	}
 
 	@Test
 	void testFindAllPosts() {
-		List<Post> posts = (List<Post>) postRepository.findAll();
+		List<PostDTO> posts = postRepository.findAll().stream().map(PostDTO::new).toList();
 		assertThat(posts).isNotEmpty();
 	}
 
 	@Test
 	void testFindPostsByUser() {
-		List<Post> posts = (List<Post>) postRepository.findByUserId(user.getId());
+		List<PostDTO> posts = postRepository.findByUserId(user.getId()).stream().map(PostDTO::new).toList();
 		assertThat(posts).isNotEmpty();
 	}
 }

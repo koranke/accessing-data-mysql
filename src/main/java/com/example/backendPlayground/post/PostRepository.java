@@ -1,8 +1,11 @@
 package com.example.backendPlayground.post;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.ListCrudRepository;
 
-public interface PostRepository extends CrudRepository<Post, Long> {
+import java.util.List;
 
-	Iterable<Post> findByUserId(Long userId);
+public interface PostRepository extends ListCrudRepository<Post, Long>, CustomPostRepository {
+
+	List<Post> findByUserId(Long userId);
+
 }
