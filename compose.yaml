@@ -7,7 +7,8 @@ services:
         ports:
         - '8081:8081'
         depends_on:
-        - mysql-db
+          mysql-db:
+            condition: service_healthy
         profiles:
           - full
         environment:
@@ -26,7 +27,7 @@ services:
       ports:
         - '3306:3306'
       healthcheck:
-        test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+        test: ["CMD-SHELL", "mysqladmin ping -h localhost -u${DB_USER} -p${DB_PASSWORD}"]
         interval: 10s
         timeout: 5s
         retries: 5
