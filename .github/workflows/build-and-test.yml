@@ -20,8 +20,8 @@ jobs:
       - name: Check out companion project
         uses: actions/checkout@v4
         with:
-          repository: koranke/backend-playground-test
-          path: backend-playground-test
+          repository: koranke/backend-playground-tests
+          path: backend-playground-tests
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
@@ -40,7 +40,7 @@ jobs:
       - name: Run system-level tests
         if: contains(github.event.pull_request.labels.*.name, 'system tests')
         run: mvn -B test
-        working-directory: backend-playground-test
+        working-directory: backend-playground-tests
         env:
           DB_USER: ${{ secrets.DB_USER }}
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
