@@ -5,6 +5,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -40,5 +41,18 @@ public class CustomPostRepositoryImpl implements CustomPostRepository {
 		}
 
 		return query.getResultList().stream().map(PostDTO::new).toList();
+	}
+
+	@Override
+	@Transactional
+	public Post update(Post post) {
+		Post existingPost = entityManager.find(Post.class, post.getId());
+		if (existingPost == null) {
+			throw new IllegalArgumentException("Post with id " + post.getId() + " does not exist");
+		}
+		existingPost.setTitle(post.getTitle());
+		existingPost.setContent(post.getContent());
+		existingPost.setVisibility(post.getVisibility());
+		return entityManager.merge(existingPost);
 	}
 }

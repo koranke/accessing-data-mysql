@@ -80,7 +80,7 @@ public class PostService {
 		}
 		existingPost.setDateUpdated(new Timestamp(System.currentTimeMillis()));
 
-		return new PostDTO(postRepository.save(existingPost));
+		return new PostDTO(postRepository.update(existingPost));
 	}
 
 	public void deletePost(Long userId, Long postId) {
