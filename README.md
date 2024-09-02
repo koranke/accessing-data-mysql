@@ -28,8 +28,3 @@ To run the application in Docker containers, run the following command:
 docker-compose --profile full up
 ```
 
-Note that currently the application will not properly wait for the database to be ready before starting, despite the health
-check.  As a result, the first time you run "docker-compose up", the service will fail and exit.  Simply run the command 
-again and it will work.  This will be addressed in a future update.
-
-
