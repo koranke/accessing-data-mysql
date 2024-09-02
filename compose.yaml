@@ -12,7 +12,7 @@ services:
         profiles:
           - full
         environment:
-        - 'SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/storytack'
+        - 'SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/playgroundDb'
         - 'SPRING_DATASOURCE_USERNAME=${DB_USER}'
         - 'SPRING_DATASOURCE_PASSWORD=${DB_PASSWORD}'
         - 'SPRING_DATASOURCE_DRIVER_CLASS_NAME=com.mysql.cj.jdbc.Driver'
@@ -20,7 +20,7 @@ services:
     mysql-db:
       image: 'mysql:latest'
       environment:
-        - 'MYSQL_DATABASE=storytack'
+        - 'MYSQL_DATABASE=playgroundDb'
         - 'MYSQL_PASSWORD=${DB_PASSWORD}'
         - 'MYSQL_ROOT_PASSWORD=${DB_ROOT_PASSWORD}'
         - 'MYSQL_USER=${DB_USER}'
