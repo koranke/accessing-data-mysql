@@ -4,8 +4,8 @@
 
 This project was derived from the Spring Guides project for accessing MySQL data with Spring Boot. The original project 
 can be found [here](https://spring.io/guides/gs/accessing-data-mysql/).
-It's been updated to include some additional features and to be used as a playground for testing exercises.  For example,
-to practice unit tests, integration tests and, through a different project, system tests.
+It's been updated to include additional features and to be used as a playground for testing exercises.  For example,
+to practice unit tests, integration tests and system tests through a different project. See [backend-playground-tests](https://github.com/koranke/backend-playground-tests).
 Finally, this project can also be used for testing CI/CD pipelines.
 
 The project currently uses Java 17 with Maven for builds.  The service is a Spring Boot application that uses a MySQL
