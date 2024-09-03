@@ -12,7 +12,7 @@ runs:
       uses: actions/cache@v4
       with:
         path: /usr/local/bin/docker-compose
-        key: ${{ runner.os }}-docker-compose-${{ hashFiles(inputs.path + '**/docker-compose.yml') }}
+        key: ${{ runner.os }}-docker-compose-${{ hashFiles(format('{0}**/docker-compose.yml', inputs.path)) }}
         restore-keys: |
           ${{ runner.os }}-docker-compose-
 
