@@ -1,0 +1,20 @@
+name: 'Cache and Install Docker Compose'
+description: 'Caches and installs Docker Compose'
+runs:
+  using: 'composite'
+  steps:
+    - name: Cache Docker Compose
+      uses: actions/cache@v4
+      with:
+        path: /usr/local/bin/docker-compose
+        key: ${{ runner.os }}-docker-compose-${{ hashFiles('**/docker-compose.yml') }}
+        restore-keys: |
+          ${{ runner.os }}-docker-compose-
+
+    - name: Install Docker Compose
+      run: |
+        if [ ! -f /usr/local/bin/docker-compose ]; then
+          sudo apt-get update
+          sudo apt-get install -y docker-compose
+        fi
+      shell: bash

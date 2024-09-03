@@ -79,10 +79,8 @@ jobs:
           name: backend-playground-jar
           path: backend-playground/target
 
-      - name: Install Docker Compose
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker-compose
+      - name: Cache and Install Docker Compose
+        uses: ./.github/actions/cache-and-install-docker-compose
 
       - name: Build and start services with Docker Compose
         run: docker-compose --profile full up -d
