@@ -17,6 +17,10 @@ on:
         description: 'Run system tests?'
         required: false
         default: 'false'
+        type: choice
+        options:
+          - 'false'
+          - 'true'
 
 jobs:
   build_and_package:
