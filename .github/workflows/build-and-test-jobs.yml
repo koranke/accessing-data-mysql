@@ -80,7 +80,7 @@ jobs:
           path: backend-playground/target
 
       - name: Cache and Install Docker Compose
-        uses: ./.github/actions/install-docker-compose
+        uses: ./backend-playground/.github/actions/install-docker-compose
 
       - name: Build and start services with Docker Compose
         run: docker-compose --profile full up -d
