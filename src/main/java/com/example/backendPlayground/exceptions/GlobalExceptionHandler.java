@@ -12,6 +12,13 @@ public class GlobalExceptionHandler {
 
 	@ExceptionHandler(HttpMessageNotReadableException.class)
 	public ResponseEntity<?> handleHttpMessageNotReadableException(HttpMessageNotReadableException ex, WebRequest request) {
+		Throwable cause = ex.getCause();
+		while (cause != null) {
+			if (cause instanceof InvalidEnumValueException) {
+				return handleInvalidEnumValueException((InvalidEnumValueException) cause, request);
+			}
+			cause = cause.getCause();
+		}
 		String errorMessage = "Invalid request body: " + ex.getMessage();
 		return new ResponseEntity<>(errorMessage, HttpStatus.BAD_REQUEST);
 	}
