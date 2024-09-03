@@ -93,4 +93,15 @@ public class PostControllerTests {
 				.andExpect(status().isOk())
 				.andExpect(content().json(postJson));
 	}
+
+	@Test
+	public void testAddNewPostWithInvalidVisibility() throws Exception {
+		String invalidPostJson = "{ \"title\": \"Test Title\", \"content\": \"Test Content\", \"visibility\": \"INVALID\", \"userId\": 1 }";
+
+		mockMvc.perform(post("/api/users/1/posts")
+						.contentType(MediaType.APPLICATION_JSON)
+						.content(invalidPostJson))
+				.andExpect(status().isBadRequest())
+				.andExpect(content().string("Invalid value for PostVisibility: INVALID"));
+	}
 }
