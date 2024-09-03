@@ -92,9 +92,6 @@ jobs:
           DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
           DB_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
 
-#      - name: Wait for services to be ready
-#        run: sleep 30
-
       - name: Run system-level tests
         run: mvn -B test
         working-directory: backend-playground-tests
@@ -108,6 +105,17 @@ jobs:
         with:
           name: test-results
           path: backend-playground-tests/target/surefire-reports
+
+      - name: Get app log if tests fail
+        if: failure()
+        run: docker cp $(docker container ls -q filter "name=backend-playground-app-1"):/logs/spring.log ./app.log
+
+      - name: Upload app log artifact
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: app-logs
+          path: ./app.log
 
       - name: Tear down services
         run: docker-compose down
