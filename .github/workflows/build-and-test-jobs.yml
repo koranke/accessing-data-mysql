@@ -81,6 +81,8 @@ jobs:
 
       - name: Cache and Install Docker Compose
         uses: ./backend-playground/.github/actions/install-docker-compose
+        with:
+          path: backend-playground/
 
       - name: Build and start services with Docker Compose
         run: docker-compose --profile full up -d
