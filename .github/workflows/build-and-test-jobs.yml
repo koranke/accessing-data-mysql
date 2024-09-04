@@ -113,16 +113,17 @@ jobs:
         if: always()
         with:
           gh_pages: gh-pages
-          allure_history: allure-history
+          allure_history: backend-playground-tests/allure-history
           allure_results: backend-playground-tests/allure-results
 
       - name: Publish test report
         uses: peaceiris/actions-gh-pages@v4
         if: always()
         with:
+          external_repository: koranke/backend-playground-tests
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: backend-playground-tests/allure-history
+          publish_dir: allure-history
 
       - name: Upload TestNG test results
         if: always()
