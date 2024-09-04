@@ -121,7 +121,7 @@ jobs:
         if: always()
         with:
           external_repository: koranke/backend-playground-tests
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          personal_token: ${{ secrets.COMPANION_TEST_PAT }}
           publish_branch: gh-pages
           publish_dir: allure-history
 
