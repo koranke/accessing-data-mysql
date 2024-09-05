@@ -126,9 +126,9 @@ jobs:
 #          publish_dir: allure-history
 
 # Above is not working.  Trying an alternative approach below.
-      - name: Copy Allure report to gh-pages
-        if: always()
-        run: cp -r backend-playground-tests/allure-history/* gh-pages/
+#      - name: Copy Allure report to gh-pages
+#        if: always()
+#        run: cp -r backend-playground-tests/allure-history/* gh-pages/
 
       - name: Commit and push Allure report
         if: always()
