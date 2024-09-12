@@ -1,6 +1,6 @@
-package com.example.backendPlayground.user;
+package com.example.backendPlayground.features.user;
 
-import com.example.backendPlayground.post.Post;
+import com.example.backendPlayground.features.post.Post;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -12,7 +12,7 @@ import lombok.Data;
 import java.sql.Date;
 import java.util.List;
 
-@Entity
+@Entity(name="users")
 @Data
 public class User {
 	@Id

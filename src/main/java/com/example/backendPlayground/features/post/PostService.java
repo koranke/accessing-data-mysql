@@ -1,10 +1,10 @@
-package com.example.backendPlayground.post;
+package com.example.backendPlayground.features.post;
 
 import com.example.backendPlayground.enums.PostVisibility;
 import com.example.backendPlayground.exceptions.InvalidRequestDataException;
 import com.example.backendPlayground.exceptions.ResourceNotFoundException;
-import com.example.backendPlayground.user.User;
-import com.example.backendPlayground.user.UserRepository;
+import com.example.backendPlayground.features.user.User;
+import com.example.backendPlayground.features.user.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

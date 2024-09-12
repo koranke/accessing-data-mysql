@@ -1,4 +1,4 @@
-package com.example.backendPlayground.post;
+package com.example.backendPlayground.features.post;
 
 import com.example.backendPlayground.enums.PostVisibility;
 

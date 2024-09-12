@@ -1,11 +1,11 @@
 package com.example.backendPlayground.unitTests;
 
 import com.example.backendPlayground.enums.PostVisibility;
-import com.example.backendPlayground.post.Post;
-import com.example.backendPlayground.post.PostController;
-import com.example.backendPlayground.post.PostDTO;
-import com.example.backendPlayground.post.PostService;
-import com.example.backendPlayground.user.User;
+import com.example.backendPlayground.features.post.Post;
+import com.example.backendPlayground.features.post.PostController;
+import com.example.backendPlayground.features.post.PostDTO;
+import com.example.backendPlayground.features.post.PostService;
+import com.example.backendPlayground.features.user.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

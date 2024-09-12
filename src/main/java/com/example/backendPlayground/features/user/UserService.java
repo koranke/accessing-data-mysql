@@ -1,8 +1,8 @@
-package com.example.backendPlayground.user;
+package com.example.backendPlayground.features.user;
 
 import com.example.backendPlayground.exceptions.InvalidRequestDataException;
 import com.example.backendPlayground.exceptions.ResourceNotFoundException;
-import com.example.backendPlayground.post.PostRepository;
+import com.example.backendPlayground.features.post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

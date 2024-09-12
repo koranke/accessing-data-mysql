@@ -1,4 +1,4 @@
-package com.example.backendPlayground.user;
+package com.example.backendPlayground.features.user;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
