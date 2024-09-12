@@ -1,4 +1,4 @@
-package com.example.backendPlayground.user;
+package com.example.backendPlayground.features.user;
 
 import org.springframework.data.repository.ListCrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;

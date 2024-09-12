@@ -1,4 +1,4 @@
-package com.example.backendPlayground.user;
+package com.example.backendPlayground.features.user;
 
 import lombok.Data;
 
