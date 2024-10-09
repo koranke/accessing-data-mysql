@@ -1,10 +1,10 @@
-# Demo Spring Project
+# Backend Playground
 
 [![CI](https://github.com/koranke/backend-playground/actions/workflows/build-and-test-jobs.yml/badge.svg)](https://github.com/koranke/backend-playground/actions/workflows/build-and-test-jobs.yml)
 
 This project was derived from the Spring Guides project for accessing MySQL data with Spring Boot. The original project 
 can be found [here](https://spring.io/guides/gs/accessing-data-mysql/).
-It's been updated to include additional features and to be used as a playground for testing exercises.  For example,
+It has been modified to include additional features and to be used as a playground for testing exercises.  For example,
 to practice unit tests, integration tests and system tests through a different project. See [backend-playground-tests](https://github.com/koranke/backend-playground-tests).
 Finally, this project can also be used for testing CI/CD pipelines.
 
