@@ -1,4 +1,4 @@
-package com.example.backendPlayground.post;
+package com.example.backendPlayground.features.post;
 
 import com.example.backendPlayground.enums.PostVisibility;
 import jakarta.persistence.EntityManager;
@@ -17,7 +17,7 @@ public class CustomPostRepositoryImpl implements CustomPostRepository {
 
 	@Override
 	public List<PostDTO> findByUserIdAndCriteria(Long userId, PostVisibility visibility, String title, String content) {
-		String queryStr = "SELECT p FROM Post p WHERE p.user.id = :userId";
+		String queryStr = "SELECT p FROM posts p WHERE p.user.id = :userId";
 		if (visibility != null) {
 			queryStr += " AND p.visibility = :visibility";
 		}

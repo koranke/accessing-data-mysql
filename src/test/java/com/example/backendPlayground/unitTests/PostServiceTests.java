@@ -1,11 +1,11 @@
 package com.example.backendPlayground.unitTests;
 
 import com.example.backendPlayground.exceptions.ResourceNotFoundException;
-import com.example.backendPlayground.post.Post;
-import com.example.backendPlayground.post.PostRepository;
-import com.example.backendPlayground.post.PostService;
-import com.example.backendPlayground.user.User;
-import com.example.backendPlayground.user.UserRepository;
+import com.example.backendPlayground.features.post.Post;
+import com.example.backendPlayground.features.post.PostRepository;
+import com.example.backendPlayground.features.post.PostService;
+import com.example.backendPlayground.features.user.User;
+import com.example.backendPlayground.features.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

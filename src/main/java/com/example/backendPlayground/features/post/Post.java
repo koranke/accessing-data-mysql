@@ -1,7 +1,7 @@
-package com.example.backendPlayground.post;
+package com.example.backendPlayground.features.post;
 
 import com.example.backendPlayground.enums.PostVisibility;
-import com.example.backendPlayground.user.User;
+import com.example.backendPlayground.features.user.User;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -14,7 +14,7 @@ import lombok.Data;
 
 import java.sql.Timestamp;
 
-@Entity
+@Entity(name="posts")
 @Data
 public class Post {
 	@Id

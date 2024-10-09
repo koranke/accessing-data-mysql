@@ -1,10 +1,10 @@
 package com.example.backendPlayground;
 
-import com.example.backendPlayground.post.Post;
-import com.example.backendPlayground.post.PostDTO;
-import com.example.backendPlayground.post.PostRepository;
-import com.example.backendPlayground.user.User;
-import com.example.backendPlayground.user.UserRepository;
+import com.example.backendPlayground.features.post.Post;
+import com.example.backendPlayground.features.post.PostDTO;
+import com.example.backendPlayground.features.post.PostRepository;
+import com.example.backendPlayground.features.user.User;
+import com.example.backendPlayground.features.user.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,10 +1,10 @@
 package com.example.backendPlayground.unitTests;
 
 import com.example.backendPlayground.exceptions.InvalidRequestDataException;
-import com.example.backendPlayground.user.User;
-import com.example.backendPlayground.user.UserController;
-import com.example.backendPlayground.user.UserDTO;
-import com.example.backendPlayground.user.UserService;
+import com.example.backendPlayground.features.user.User;
+import com.example.backendPlayground.features.user.UserController;
+import com.example.backendPlayground.features.user.UserDTO;
+import com.example.backendPlayground.features.user.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

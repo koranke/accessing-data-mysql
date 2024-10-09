@@ -1,4 +1,4 @@
-package com.example.backendPlayground.post;
+package com.example.backendPlayground.features.post;
 
 import org.springframework.data.repository.ListCrudRepository;
 
