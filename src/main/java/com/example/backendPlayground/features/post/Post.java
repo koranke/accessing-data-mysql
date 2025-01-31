@@ -2,6 +2,7 @@ package com.example.backendPlayground.features.post;
 
 import com.example.backendPlayground.enums.PostVisibility;
 import com.example.backendPlayground.features.user.User;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -24,6 +25,7 @@ public class Post {
 	@JoinColumn(name="user_id", nullable=false)
 	private User user;
 	private String title;
+	@Column(length = 1000)
 	private String content;
 	@Enumerated(EnumType.STRING)
 	private PostVisibility visibility;
